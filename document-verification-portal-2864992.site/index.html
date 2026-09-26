@@ -108,8 +108,8 @@
             font-family: monospace;
         }
 
-        /* Full Header Image Container (Edge-to-Edge) */
-        .top-header-image-container {
+        /* Full Header Image Container with Precise Touch Areas */
+        .top-header-wrapper {
             width: 100%;
             background-color: #ffffff;
             position: sticky;
@@ -120,17 +120,42 @@
             align-items: center;
             padding: 0;
             margin: 0;
-            cursor: pointer;
         }
 
-        .top-header-image-container img {
+        .header-img-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-img-container img {
             width: 100%;
             height: auto;
             object-fit: cover;
             display: block;
         }
 
-        /* Slide-out Menu Overlay */
+        /* Invisible clickable hotspots over Menu and Translate icons on the header image */
+        .hotspot-menu, .hotspot-translate {
+            position: absolute;
+            top: 15%;
+            bottom: 15%;
+            width: 18%;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* In Arabic (RTL): Menu is Left, Translate is Right */
+        html[dir="rtl"] .hotspot-menu { left: 3%; }
+        html[dir="rtl"] .hotspot-translate { right: 3%; }
+
+        /* In English (LTR): Translate is Left, Menu is Right */
+        html[dir="ltr"] .hotspot-menu { right: 3%; }
+        html[dir="ltr"] .hotspot-translate { left: 3%; }
+
+        /* Slide-out Menu Overlay (Opening from Left) */
         #menu-overlay {
             position: fixed;
             top: 0;
@@ -147,21 +172,21 @@
         #side-menu {
             position: fixed;
             top: 0;
-            right: -100%;
+            left: -100%;
             width: 85%;
             max-width: 400px;
             height: 100%;
             background-color: #ffffff;
             z-index: 2001;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            transition: right 0.35s ease;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            transition: left 0.35s ease;
             display: flex;
             flex-direction: column;
             direction: rtl;
         }
 
         #side-menu.active {
-            right: 0;
+            left: 0;
         }
 
         .menu-header {
@@ -511,12 +536,18 @@
     <!-- Main Web App Container -->
     <div id="main-app-content">
 
-        <!-- Top Header Full Width Image with Click functionality -->
-        <header class="top-header-image-container" onclick="handleHeaderClick(event)">
-            <img id="header-img" src="header-ar.png" alt="Header Banner">
+        <!-- Top Header Full Width Image with Precise Click Hotspots -->
+        <header class="top-header-wrapper">
+            <div class="header-img-container">
+                <img id="header-img" src="header-ar.png" alt="Header Banner">
+                <!-- Hotspot for Menu Icon Only -->
+                <div class="hotspot-menu" onclick="openMenu()"></div>
+                <!-- Hotspot for Translate Icon Only -->
+                <div class="hotspot-translate" onclick="switchLanguage()"></div>
+            </div>
         </header>
 
-        <!-- Slide-out Menu Overlay -->
+        <!-- Slide-out Menu Overlay (Opening from Left) -->
         <div id="menu-overlay" onclick="closeMenu()"></div>
         <div id="side-menu">
             <div class="menu-header">
@@ -710,32 +741,6 @@
             document.getElementById('error-screen').style.display = 'block';
         }
 
-        // Header click interaction logic for Menu and Translate buttons based on coordinates
-        let currentLang = 'ar';
-
-        function handleHeaderClick(event) {
-            const rect = event.currentTarget.getBoundingClientRect();
-            const clickX = event.clientX - rect.left;
-            const totalWidth = rect.width;
-            const percentage = (clickX / totalWidth) * 100;
-
-            if (currentLang === 'ar') {
-                // In Arabic (RTL): Menu is on the left (0-25%), Translate is on the right (75-100%)
-                if (percentage < 25) {
-                    openMenu();
-                } else if (percentage > 75) {
-                    switchLanguage();
-                }
-            } else {
-                // In English (LTR): Translate is on the left (0-25%), Menu is on the right (75-100%)
-                if (percentage < 25) {
-                    switchLanguage();
-                } else if (percentage > 75) {
-                    openMenu();
-                }
-            }
-        }
-
         function openMenu() {
             document.getElementById('menu-overlay').style.display = 'block';
             setTimeout(() => {
@@ -753,6 +758,7 @@
         }
 
         // Language Switcher Toggle Functionality
+        let currentLang = 'ar';
         function switchLanguage() {
             const htmlRoot = document.getElementById('html-root');
             const headerImg = document.getElementById('header-img');
@@ -761,7 +767,7 @@
                 currentLang = 'en';
                 htmlRoot.setAttribute('dir', 'ltr');
                 htmlRoot.setAttribute('lang', 'en');
-                headerImg.src = 'header-en.png'; // English header image (Menu on right, Translate on left)
+                headerImg.src = 'header-en.png';
 
                 // Translate text elements
                 document.getElementById('page-main-heading').innerText = "Document Verification Result";
@@ -783,7 +789,7 @@
                 currentLang = 'ar';
                 htmlRoot.setAttribute('dir', 'rtl');
                 htmlRoot.setAttribute('lang', 'ar');
-                headerImg.src = 'header-ar.png'; // Arabic header image (Menu on left, Translate on right)
+                headerImg.src = 'header-ar.png';
 
                 // Revert to Arabic text
                 document.getElementById('page-main-heading').innerText = "نتيجة التحقق من الوثائق";
