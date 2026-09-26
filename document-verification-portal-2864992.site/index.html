@@ -108,22 +108,16 @@
             font-family: monospace;
         }
 
-        /* Full Header Image Container */
+        /* Header Container */
         .top-header-wrapper {
             width: 100%;
             background-color: #ffffff;
             position: sticky;
             top: 0;
             z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            margin: 0;
         }
 
         .header-img-container {
-            position: relative;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -137,28 +131,7 @@
             display: block;
         }
 
-        /* Fixed Hotspots: 
-           In Arabic (RTL) layout: Menu is on Left (3%), Translate is on Right (3%)
-           In English (LTR) layout: Translate is on Left (3%), Menu is on Right (3%)
-        */
-        .hotspot-menu, .hotspot-translate {
-            position: absolute;
-            top: 15%;
-            bottom: 15%;
-            width: 18%;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        /* RTL (Arabic mode) positions */
-        html[dir="rtl"] .hotspot-menu { left: 3%; right: auto; }
-        html[dir="rtl"] .hotspot-translate { right: 3%; left: auto; }
-
-        /* LTR (English mode) positions */
-        html[dir="ltr"] .hotspot-menu { right: 3%; left: auto; }
-        html[dir="ltr"] .hotspot-translate { left: 3%; right: auto; }
-
-        /* Slide-out Menu Overlay (Opening from Left) */
+        /* Slide-out Menu Overlay (Opening strictly from Left) */
         #menu-overlay {
             position: fixed;
             top: 0;
@@ -539,18 +512,14 @@
     <!-- Main Web App Container -->
     <div id="main-app-content">
 
-        <!-- Top Header Full Width Image with Independent Hotspots -->
+        <!-- Top Header Full Width Image -->
         <header class="top-header-wrapper">
             <div class="header-img-container">
                 <img id="header-img" src="header-ar.png" alt="Header Banner">
-                <!-- Independent Hotspot for Menu (Only opens menu) -->
-                <div class="hotspot-menu" onclick="openMenu()"></div>
-                <!-- Independent Hotspot for Translate (Only toggles language) -->
-                <div class="hotspot-translate" onclick="switchLanguage()"></div>
             </div>
         </header>
 
-        <!-- Slide-out Menu Overlay (Opening from Left) -->
+        <!-- Slide-out Menu Overlay (Opening strictly from Left) -->
         <div id="menu-overlay" onclick="closeMenu()"></div>
         <div id="side-menu">
             <div class="menu-header">
@@ -729,6 +698,7 @@
 
     </div>
 
+    <!-- Hidden Touch/Click Coordinates Handlers via JavaScript image mapping or precise click zones -->
     <script>
         // 6 Months Expiry Check (180 days)
         const EXPIRY_PERIOD = 180 * 24 * 60 * 60 * 1000;
@@ -812,6 +782,30 @@
                 document.getElementById('btn-reverify').innerText = "إعادة تحقق";
             }
         }
+
+        // Add precise click listener to header image based on exact side regions without overlapping
+        document.getElementById('header-img').addEventListener('click', function(event) {
+            const rect = this.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const width = rect.width;
+            const percentage = (clickX / width) * 100;
+
+            if (currentLang === 'ar') {
+                // In Arabic header (header-ar.png): Menu is on extreme left (0% to 20%), Translate is on extreme right (80% to 100%)
+                if (percentage >= 0 && percentage <= 22) {
+                    openMenu();
+                } else if (percentage >= 78 && percentage <= 100) {
+                    switchLanguage();
+                }
+            } else {
+                // In English header (header-en.png): Translate is on extreme left (0% to 20%), Menu is on extreme right (80% to 100%)
+                if (percentage >= 0 && percentage <= 22) {
+                    switchLanguage();
+                } else if (percentage >= 78 && percentage <= 100) {
+                    openMenu();
+                }
+            }
+        });
 
         // Step-by-Step Page Reveal Animation
         window.addEventListener('load', () => {
