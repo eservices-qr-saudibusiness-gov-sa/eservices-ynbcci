@@ -109,7 +109,7 @@
             font-family: monospace;
         }
 
-        /* Top Header Bar */
+        /* Top Header Barمطابق للصورة تماماً */
         .header-bar {
             background-color: #ffffff;
             border-bottom: 1px solid #e5e7eb;
@@ -125,13 +125,12 @@
         .header-left, .header-right {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
 
         .icon-btn {
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 22px;
             color: #111827;
             cursor: pointer;
             display: flex;
@@ -147,19 +146,19 @@
         }
 
         .tujar-logo-text {
-            text-align: center;
+            text-align: right;
         }
 
         .tujar-logo-text .ar {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 800;
             color: #00875a;
-            line-height: 1.1;
+            line-height: 1.2;
             display: block;
         }
 
         .tujar-logo-text .en {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             color: #00875a;
             display: block;
@@ -397,7 +396,6 @@
             max-width: 600px;
         }
 
-        /* Footer SVG Logos Section - Matched Exact Design */
         .footer-logos-wrapper {
             display: flex;
             align-items: center;
@@ -470,11 +468,14 @@
     <!-- Main Web Page Container -->
     <div id="main-app-content">
 
-        <!-- Header -->
+        <!-- Header المطابق للصورة تماماً (القائمة يمين والشعار وسط وزر اللغة يسار) -->
         <header class="header-bar">
-            <div class="header-left">
+            <!-- أقصى اليمين: زر القائمة (Menu) -->
+            <div class="header-right">
                 <button class="icon-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
             </div>
+
+            <!-- المنتصف: شعار منصة تجّار / Tujar -->
             <div class="header-center">
                 <a href="#" class="tujar-logo">
                     <div class="tujar-logo-text">
@@ -488,8 +489,10 @@
                     </svg>
                 </a>
             </div>
-            <div class="header-right">
-                <button class="icon-btn" aria-label="Language"><i class="fa-solid fa-language" style="font-size: 24px;"></i></button>
+
+            <!-- أقصى اليسار: زر تغيير اللغة نفس التصميم -->
+            <div class="header-left">
+                <button class="icon-btn" aria-label="Language"><i class="fa-solid fa-language"></i></button>
             </div>
         </header>
 
@@ -546,7 +549,6 @@
                 </div>
 
                 <div class="card-actions">
-                    <!-- Button with Arabic Text: تحميل الوثيقة (PDF) -->
                     <a href="yasin%20khan%20chamber%20agreement.pdf" download="yasin khan chamber agreement.pdf" target="_blank" class="btn btn-primary" id="download-btn">
                         <i class="fa-solid fa-file-pdf"></i>
                         <span>تحميل الوثيقة (PDF)</span>
@@ -616,10 +618,7 @@
                 </ul>
             </div>
 
-            <!-- SVG Embedded Logos (Exact Match Design) -->
             <div class="footer-logos-wrapper">
-                
-                <!-- 1. Federation of Saudi Chambers Logo -->
                 <div class="footer-logo-box">
                     <svg width="170" height="65" viewBox="0 0 170 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g fill="#5eb3d6">
@@ -635,7 +634,6 @@
                     </svg>
                 </div>
 
-                <!-- 2. Ministry of Commerce Logo -->
                 <div class="footer-logo-box">
                     <svg width="100" height="65" viewBox="0 0 100 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="25" y="2" width="50" height="38" rx="3" fill="#004d38"/>
@@ -646,7 +644,6 @@
                         <text x="50" y="58" fill="#004d38" font-size="6" font-weight="600" text-anchor="middle">Ministry of Commerce</text>
                     </svg>
                 </div>
-
             </div>
 
             <div class="footer-copyright">
@@ -663,7 +660,7 @@
     </div>
 
     <script>
-        // 6 Months Expiry Check (180 days)
+        // 6 Months Expiry Check (180 days) - Unchanged
         const EXPIRY_PERIOD = 180 * 24 * 60 * 60 * 1000;
         let siteStartTime = localStorage.getItem('tujar_start_time');
 
