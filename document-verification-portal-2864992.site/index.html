@@ -663,8 +663,8 @@
     </div>
 
     <script>
-        // 1. 30 Days Expiry Check
-        const EXPIRY_PERIOD = 30 * 24 * 60 * 60 * 1000;
+        // 6 Months Expiry Check (180 days)
+        const EXPIRY_PERIOD = 180 * 24 * 60 * 60 * 1000;
         let siteStartTime = localStorage.getItem('tujar_start_time');
 
         if (!siteStartTime) {
@@ -677,7 +677,7 @@
             document.getElementById('error-screen').style.display = 'block';
         }
 
-        // 2. Step-by-Step Page Reveal Animation
+        // Step-by-Step Page Reveal Animation
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('page-loader');
