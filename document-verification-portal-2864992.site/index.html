@@ -108,7 +108,7 @@
             font-family: monospace;
         }
 
-        /* Full Header Image Container (Edge-to-Edge, No Border) */
+        /* Full Header Image Container (Edge-to-Edge) */
         .top-header-image-container {
             width: 100%;
             background-color: #ffffff;
@@ -128,6 +128,85 @@
             height: auto;
             object-fit: cover;
             display: block;
+        }
+
+        /* Slide-out Menu Overlay */
+        #menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 2000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #side-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 2001;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            direction: rtl;
+        }
+
+        #side-menu.active {
+            right: 0;
+        }
+
+        .menu-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .menu-close-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #333333;
+            cursor: pointer;
+        }
+
+        .menu-items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-items-list li {
+            border-bottom: 1px solid #f1f3f4;
+        }
+
+        .menu-items-list li a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            color: #111827;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .menu-items-list li a:hover {
+            background-color: #f8f9fa;
+        }
+
+        .menu-items-list li a i {
+            font-size: 18px;
+            color: #4b5563;
         }
 
         /* Main Content Animation Steps */
@@ -432,10 +511,26 @@
     <!-- Main Web App Container -->
     <div id="main-app-content">
 
-        <!-- Top Header Full Width Image with Click functionality for Translate & Menu -->
+        <!-- Top Header Full Width Image with Click functionality -->
         <header class="top-header-image-container" onclick="handleHeaderClick(event)">
             <img id="header-img" src="header-ar.png" alt="Header Banner">
         </header>
+
+        <!-- Slide-out Menu Overlay -->
+        <div id="menu-overlay" onclick="closeMenu()"></div>
+        <div id="side-menu">
+            <div class="menu-header">
+                <button class="menu-close-btn" onclick="closeMenu()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <ul class="menu-items-list">
+                <li><a href="#" onclick="alert('الخدمات clicked');">الخدمات</a></li>
+                <li><a href="#" onclick="alert('لمن المنصة clicked');">لمن المنصة</a></li>
+                <li><a href="#" onclick="alert('كيف تبدأ clicked');">كيف تبدأ</a></li>
+                <li><a href="#" onclick="alert('عن المنصة clicked');">عن المنصة</a></li>
+                <li><a href="#" onclick="switchLanguage(); closeMenu();">English <i class="fa-solid fa-language"></i></a></li>
+                <li><a href="#" onclick="alert('تسجيل الدخول clicked');">تسجيل الدخول <i class="fa-regular fa-user"></i></a></li>
+            </ul>
+        </div>
 
         <!-- Main Body Content -->
         <main class="page-content">
@@ -617,6 +712,7 @@
 
         // Header click interaction logic for Menu and Translate buttons based on coordinates
         let currentLang = 'ar';
+
         function handleHeaderClick(event) {
             const rect = event.currentTarget.getBoundingClientRect();
             const clickX = event.clientX - rect.left;
@@ -624,20 +720,36 @@
             const percentage = (clickX / totalWidth) * 100;
 
             if (currentLang === 'ar') {
-                // In Arabic (RTL): Menu is roughly on the left (0-20%), Translate is on the right (80-100%)
+                // In Arabic (RTL): Menu is on the left (0-25%), Translate is on the right (75-100%)
                 if (percentage < 25) {
-                    alert('Menu clicked!');
+                    openMenu();
                 } else if (percentage > 75) {
                     switchLanguage();
                 }
             } else {
-                // In English (LTR): Translate is on the left (0-20%), Menu is on the right (80-100%)
+                // In English (LTR): Translate is on the left (0-25%), Menu is on the right (75-100%)
                 if (percentage < 25) {
                     switchLanguage();
                 } else if (percentage > 75) {
-                    alert('Menu clicked!');
+                    openMenu();
                 }
             }
+        }
+
+        function openMenu() {
+            document.getElementById('menu-overlay').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('menu-overlay').style.opacity = '1';
+                document.getElementById('side-menu').classList.add('active');
+            }, 10);
+        }
+
+        function closeMenu() {
+            document.getElementById('side-menu').classList.remove('active');
+            document.getElementById('menu-overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('menu-overlay').style.display = 'none';
+            }, 300);
         }
 
         // Language Switcher Toggle Functionality
