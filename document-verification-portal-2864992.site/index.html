@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,23 +108,25 @@
             font-family: monospace;
         }
 
-        /* Full Header Image Container */
+        /* Full Header Image Container (Edge-to-Edge, No Border) */
         .top-header-image-container {
             width: 100%;
             background-color: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
             position: sticky;
             top: 0;
             z-index: 1000;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
         }
 
         .top-header-image-container img {
             width: 100%;
-            max-height: 70px;
-            object-fit: contain;
+            height: auto;
+            object-fit: cover;
             display: block;
         }
 
@@ -430,9 +432,9 @@
     <!-- Main Web App Container -->
     <div id="main-app-content">
 
-        <!-- Top Header Full Width Image (यहाँ अपनी फुल हेडर तस्वीर लगाएं: header-image.png) -->
-        <header class="top-header-image-container">
-            <img src="header-image.png" alt="Header Banner">
+        <!-- Top Header Full Width Image with Click functionality for Translate & Menu -->
+        <header class="top-header-image-container" onclick="handleHeaderClick(event)">
+            <img id="header-img" src="header-ar.png" alt="Header Banner">
         </header>
 
         <!-- Main Body Content -->
@@ -443,56 +445,56 @@
                 <div class="card-header">
                     <a href="#" class="back-btn"><i class="fa-solid fa-arrow-right"></i></a>
                     <div>
-                        <h2>نتيجة التحقق من الوثائق</h2>
-                        <p class="subtitle">خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونياً عبر بوابة خدمات المشتركين.</p>
+                        <h2 id="page-main-heading">نتيجة التحقق من الوثائق</h2>
+                        <p class="subtitle" id="page-sub-text">خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونياً عبر بوابة خدمات المشتركين.</p>
                     </div>
                 </div>
 
                 <div class="details-grid">
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-regular fa-building"></i></div>
-                        <div><span class="label">اسم الغرفة</span><span class="value">عنيزة</span></div>
+                        <div><span class="label" id="lbl-chamber">اسم الغرفة</span><span class="value">عنيزة</span></div>
                     </div>
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-regular fa-file-lines"></i></div>
-                        <div><span class="label">الخدمة</span><span class="value">تصديق المطبوعات الرسمية</span></div>
+                        <div><span class="label" id="lbl-service">الخدمة</span><span class="value" id="val-service">تصديق المطبوعات الرسمية</span></div>
                     </div>
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-solid fa-hashtag"></i></div>
-                        <div><span class="label">رقم الوثيقة</span><span class="value">602-25728</span></div>
+                        <div><span class="label" id="lbl-doc-no">رقم الوثيقة</span><span class="value">602-25728</span></div>
                     </div>
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-regular fa-user"></i></div>
-                        <div><span class="label">مقدم الطلب</span><span class="value">سالم فواز الشمري</span></div>
+                        <div><span class="label" id="lbl-applicant">مقدم الطلب</span><span class="value">سالم فواز الشمري</span></div>
                     </div>
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-solid fa-store"></i></div>
-                        <div><span class="label">اسم المنشأة</span><span class="value">شركة سالم فواز الشمري لصيانة السيارات</span></div>
+                        <div><span class="label" id="lbl-facility">اسم المنشأة</span><span class="value">شركة سالم فواز الشمري لصيانة السيارات</span></div>
                     </div>
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-solid fa-id-card"></i></div>
-                        <div><span class="label">رقم العضوية</span><span class="value">602001213945</span></div>
+                        <div><span class="label" id="lbl-membership">رقم العضوية</span><span class="value">602001213945</span></div>
                     </div>
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-solid fa-barcode"></i></div>
-                        <div><span class="label">الرقم الموحد</span><span class="value">7049514032</span></div>
+                        <div><span class="label" id="lbl-unified">الرقم الموحد</span><span class="value">7049514032</span></div>
                     </div>
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-regular fa-calendar-days"></i></div>
-                        <div><span class="label">تاريخ ووقت الإنشاء</span><span class="value">2026/09/10 - 07:15 PM</span></div>
+                        <div><span class="label" id="lbl-date">تاريخ ووقت الإنشاء</span><span class="value">2026/09/10 - 07:15 PM</span></div>
                     </div>
                     <div class="detail-item">
                         <div class="icon-box"><i class="fa-solid fa-check-double"></i></div>
-                        <div><span class="label">حالة الوثيقة</span><span class="value status-badge"><span class="dot"></span> مقبول - ساري</span></div>
+                        <div><span class="label" id="lbl-status">حالة الوثيقة</span><span class="value status-badge"><span class="dot"></span> <span id="status-text">مقبول - ساري</span></span></div>
                     </div>
                 </div>
 
                 <div class="card-actions">
-                    <a href="yasin%20khan%20chamber%20agreement.pdf" download="yasin khan chamber agreement.pdf" target="_blank" class="btn btn-primary">
+                    <a href="yasin%20khan%20chamber%20agreement.pdf" download="yasin khan chamber agreement.pdf" target="_blank" class="btn btn-primary" id="download-btn">
                         <i class="fa-solid fa-file-pdf"></i>
-                        <span>تحميل الوثيقة (PDF)</span>
+                        <span id="btn-download-text">تحميل الوثيقة (PDF)</span>
                     </a>
-                    <button class="btn btn-secondary">إعادة تحقق</button>
+                    <button class="btn btn-secondary" id="btn-reverify">إعادة تحقق</button>
                 </div>
             </section>
 
@@ -501,24 +503,24 @@
                 <div class="timeline-step">
                     <div class="step-circle"><i class="fa-solid fa-check"></i></div>
                     <div class="step-details">
-                        <h4>الاستعلام بالرقم المرجعي</h4>
-                        <p>البحث عن وثيقة قائمة العمليات</p>
+                        <h4 id="t1-title">الاستعلام بالرقم المرجعي</h4>
+                        <p id="t1-desc">البحث عن وثيقة قائمة العمليات</p>
                     </div>
                 </div>
                 <div class="timeline-line"></div>
                 <div class="timeline-step">
                     <div class="step-circle"><i class="fa-solid fa-check"></i></div>
                     <div class="step-details">
-                        <h4>التحقق من صحة المعرف</h4>
-                        <p>أدخل بيانات العضوية أو الجهة التابعة لك</p>
+                        <h4 id="t2-title">التحقق من صحة المعرف</h4>
+                        <p id="t2-desc">أدخل بيانات العضوية أو الجهة التابعة لك</p>
                     </div>
                 </div>
                 <div class="timeline-line"></div>
                 <div class="timeline-step">
                     <div class="step-circle"><i class="fa-solid fa-check"></i></div>
                     <div class="step-details">
-                        <h4>التحقق عبر عرض بيانات الوثيقة وتحميلها</h4>
-                        <p>التحقق عبر عرض بيانات الوثيقة وتحميلها</p>
+                        <h4 id="t3-title">التحقق عبر عرض بيانات الوثيقة وتحميلها</h4>
+                        <p id="t3-desc">التحقق عبر عرض بيانات الوثيقة وتحميلها</p>
                     </div>
                 </div>
             </section>
@@ -528,18 +530,18 @@
         <!-- Fully Matched Footer -->
         <footer class="footer animate-cascade">
             <div class="footer-block">
-                <h3>أقسام مهمة</h3>
+                <h3 id="f-sec1">أقسام مهمة</h3>
                 <ul class="footer-links-list">
-                    <li><a href="#">الأسئلة الشائعة</a></li>
-                    <li><a href="#">سياسة الخصوصية</a></li>
-                    <li><a href="#">الشروط والأحكام</a></li>
+                    <li><a href="#" id="f-l1">الأسئلة الشائعة</a></li>
+                    <li><a href="#" id="f-l2">سياسة الخصوصية</a></li>
+                    <li><a href="#" id="f-l3">الشروط والأحكام</a></li>
                 </ul>
             </div>
 
             <div class="footer-divider"></div>
 
             <div class="footer-block">
-                <h3>روابط أخرى</h3>
+                <h3 id="f-sec2">روابط أخرى</h3>
                 <ul class="footer-links-list">
                     <li><a href="mailto:HD@elm.sa" style="text-decoration: underline;">HD@elm.sa</a></li>
                 </ul>
@@ -548,12 +550,12 @@
             <div class="footer-divider"></div>
 
             <div class="footer-block">
-                <h3>روابط خارجية</h3>
+                <h3 id="f-sec3">روابط خارجية</h3>
                 <ul class="footer-links-list">
-                    <li><a href="#" style="color: #00875a; font-weight: 600;">وزارة التجارة</a></li>
-                    <li><a href="#">وزارة الصناعة والثروة المعدنية</a></li>
-                    <li><a href="#">هيئة الزكاة والضريبة والجمارك</a></li>
-                    <li><a href="#">الموارد البشرية والتنمية الاجتماعية</a></li>
+                    <li><a href="#" style="color: #00875a; font-weight: 600;" id="f-ext1">وزارة التجارة</a></li>
+                    <li><a href="#" id="f-ext2">وزارة الصناعة والثروة المعدنية</a></li>
+                    <li><a href="#" id="f-ext3">هيئة الزكاة والضريبة والجمارك</a></li>
+                    <li><a href="#" id="f-ext4">الموارد البشرية والتنمية الاجتماعية</a></li>
                 </ul>
             </div>
 
@@ -569,7 +571,7 @@
                             <circle cx="24" cy="30" r="1.8"/><circle cx="28" cy="29" r="1.8"/><circle cx="32" cy="28" r="1.8"/><circle cx="36" cy="27" r="1.8"/>
                             <circle cx="28" cy="34" r="1.8"/><circle cx="32" cy="33" r="1.8"/>
                         </g>
-                        <text x="85" y="45" fill="#007a53" font-size="11" font-weight="bold" text-anchor="middle">اتحاد الغرف التجارية السعودية</text>
+                        <text x="85" y="45" fill="#007a53" font-size="11" font-weight="bold" text-anchor="middle" id="svg-text-fsc">اتحاد الغرف التجارية السعودية</text>
                     </svg>
                 </div>
 
@@ -585,7 +587,7 @@
                 </div>
             </div>
 
-            <div class="footer-copyright">
+            <div class="footer-copyright" id="footer-copy">
                 اتحاد الغرف السعودية. جميع الحقوق محفوظة © 2026<br>
                 موقع حكومي مسجّل لدى هيئة الحكومة الرقمية
             </div>
@@ -611,6 +613,83 @@
         if (Date.now() - siteStartTime > EXPIRY_PERIOD) {
             document.getElementById('main-app-content').style.display = 'none';
             document.getElementById('error-screen').style.display = 'block';
+        }
+
+        // Header click interaction logic for Menu and Translate buttons based on coordinates
+        let currentLang = 'ar';
+        function handleHeaderClick(event) {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const totalWidth = rect.width;
+            const percentage = (clickX / totalWidth) * 100;
+
+            if (currentLang === 'ar') {
+                // In Arabic (RTL): Menu is roughly on the left (0-20%), Translate is on the right (80-100%)
+                if (percentage < 25) {
+                    alert('Menu clicked!');
+                } else if (percentage > 75) {
+                    switchLanguage();
+                }
+            } else {
+                // In English (LTR): Translate is on the left (0-20%), Menu is on the right (80-100%)
+                if (percentage < 25) {
+                    switchLanguage();
+                } else if (percentage > 75) {
+                    alert('Menu clicked!');
+                }
+            }
+        }
+
+        // Language Switcher Toggle Functionality
+        function switchLanguage() {
+            const htmlRoot = document.getElementById('html-root');
+            const headerImg = document.getElementById('header-img');
+            
+            if (currentLang === 'ar') {
+                currentLang = 'en';
+                htmlRoot.setAttribute('dir', 'ltr');
+                htmlRoot.setAttribute('lang', 'en');
+                headerImg.src = 'header-en.png'; // English header image (Menu on right, Translate on left)
+
+                // Translate text elements
+                document.getElementById('page-main-heading').innerText = "Document Verification Result";
+                document.getElementById('page-sub-text').innerText = "A service that allows verification of documents electronically certified via the subscriber services portal.";
+                document.getElementById('lbl-chamber').innerText = "Chamber Name";
+                document.getElementById('lbl-service').innerText = "Service";
+                document.getElementById('val-service').innerText = "Attestation of Official Publications";
+                document.getElementById('lbl-doc-no').innerText = "Document No.";
+                document.getElementById('lbl-applicant').innerText = "Applicant";
+                document.getElementById('lbl-facility').innerText = "Facility Name";
+                document.getElementById('lbl-membership').innerText = "Membership No.";
+                document.getElementById('lbl-unified').innerText = "Unified Number";
+                document.getElementById('lbl-date').innerText = "Creation Date & Time";
+                document.getElementById('lbl-status').innerText = "Document Status";
+                document.getElementById('status-text').innerText = "Accepted - Active";
+                document.getElementById('btn-download-text').innerText = "Download Document (PDF)";
+                document.getElementById('btn-reverify').innerText = "Re-verify";
+            } else {
+                currentLang = 'ar';
+                htmlRoot.setAttribute('dir', 'rtl');
+                htmlRoot.setAttribute('lang', 'ar');
+                headerImg.src = 'header-ar.png'; // Arabic header image (Menu on left, Translate on right)
+
+                // Revert to Arabic text
+                document.getElementById('page-main-heading').innerText = "نتيجة التحقق من الوثائق";
+                document.getElementById('page-sub-text').innerText = "خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونياً عبر بوابة خدمات المشتركين.";
+                document.getElementById('lbl-chamber').innerText = "اسم الغرفة";
+                document.getElementById('lbl-service').innerText = "الخدمة";
+                document.getElementById('val-service').innerText = "تصديق المطبوعات الرسمية";
+                document.getElementById('lbl-doc-no').innerText = "رقم الوثيقة";
+                document.getElementById('lbl-applicant').innerText = "مقدم الطلب";
+                document.getElementById('lbl-facility').innerText = "اسم المنشأة";
+                document.getElementById('lbl-membership').innerText = "رقم العضوية";
+                document.getElementById('lbl-unified').innerText = "الرقم الموحد";
+                document.getElementById('lbl-date').innerText = "تاريخ ووقت الإنشاء";
+                document.getElementById('lbl-status').innerText = "حالة الوثيقة";
+                document.getElementById('status-text').innerText = "مقبول - ساري";
+                document.getElementById('btn-download-text').innerText = "تحميل الوثيقة (PDF)";
+                document.getElementById('btn-reverify').innerText = "إعادة تحقق";
+            }
         }
 
         // Step-by-Step Page Reveal Animation
