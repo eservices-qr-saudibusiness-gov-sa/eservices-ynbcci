@@ -108,7 +108,7 @@
             font-family: monospace;
         }
 
-        /* Full Header Image Container with Precise Touch Areas */
+        /* Full Header Image Container */
         .top-header-wrapper {
             width: 100%;
             background-color: #ffffff;
@@ -137,7 +137,10 @@
             display: block;
         }
 
-        /* Invisible clickable hotspots over Menu and Translate icons on the header image */
+        /* Fixed Hotspots: 
+           In Arabic (RTL) layout: Menu is on Left (3%), Translate is on Right (3%)
+           In English (LTR) layout: Translate is on Left (3%), Menu is on Right (3%)
+        */
         .hotspot-menu, .hotspot-translate {
             position: absolute;
             top: 15%;
@@ -147,13 +150,13 @@
             z-index: 10;
         }
 
-        /* In Arabic (RTL): Menu is Left, Translate is Right */
-        html[dir="rtl"] .hotspot-menu { left: 3%; }
-        html[dir="rtl"] .hotspot-translate { right: 3%; }
+        /* RTL (Arabic mode) positions */
+        html[dir="rtl"] .hotspot-menu { left: 3%; right: auto; }
+        html[dir="rtl"] .hotspot-translate { right: 3%; left: auto; }
 
-        /* In English (LTR): Translate is Left, Menu is Right */
-        html[dir="ltr"] .hotspot-menu { right: 3%; }
-        html[dir="ltr"] .hotspot-translate { left: 3%; }
+        /* LTR (English mode) positions */
+        html[dir="ltr"] .hotspot-menu { right: 3%; left: auto; }
+        html[dir="ltr"] .hotspot-translate { left: 3%; right: auto; }
 
         /* Slide-out Menu Overlay (Opening from Left) */
         #menu-overlay {
@@ -536,13 +539,13 @@
     <!-- Main Web App Container -->
     <div id="main-app-content">
 
-        <!-- Top Header Full Width Image with Precise Click Hotspots -->
+        <!-- Top Header Full Width Image with Independent Hotspots -->
         <header class="top-header-wrapper">
             <div class="header-img-container">
                 <img id="header-img" src="header-ar.png" alt="Header Banner">
-                <!-- Hotspot for Menu Icon Only -->
+                <!-- Independent Hotspot for Menu (Only opens menu) -->
                 <div class="hotspot-menu" onclick="openMenu()"></div>
-                <!-- Hotspot for Translate Icon Only -->
+                <!-- Independent Hotspot for Translate (Only toggles language) -->
                 <div class="hotspot-translate" onclick="switchLanguage()"></div>
             </div>
         </header>
@@ -757,7 +760,7 @@
             }, 300);
         }
 
-        // Language Switcher Toggle Functionality
+        // Clean & Independent Language Switcher Toggle Loop (Arabic <-> English)
         let currentLang = 'ar';
         function switchLanguage() {
             const htmlRoot = document.getElementById('html-root');
@@ -769,7 +772,7 @@
                 htmlRoot.setAttribute('lang', 'en');
                 headerImg.src = 'header-en.png';
 
-                // Translate text elements
+                // Translate text elements to English
                 document.getElementById('page-main-heading').innerText = "Document Verification Result";
                 document.getElementById('page-sub-text').innerText = "A service that allows verification of documents electronically certified via the subscriber services portal.";
                 document.getElementById('lbl-chamber').innerText = "Chamber Name";
@@ -791,7 +794,7 @@
                 htmlRoot.setAttribute('lang', 'ar');
                 headerImg.src = 'header-ar.png';
 
-                // Revert to Arabic text
+                // Revert text elements back to Arabic
                 document.getElementById('page-main-heading').innerText = "نتيجة التحقق من الوثائق";
                 document.getElementById('page-sub-text').innerText = "خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونياً عبر بوابة خدمات المشتركين.";
                 document.getElementById('lbl-chamber').innerText = "اسم الغرفة";
