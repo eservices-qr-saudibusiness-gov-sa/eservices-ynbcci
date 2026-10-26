@@ -224,6 +224,11 @@
             background-color: #f8f9fa;
         }
 
+        .menu-items-list li a i {
+            font-size: 16px;
+            color: #374151;
+        }
+
         /* Main Content Animation Steps - Ultra-Narrow & Centered Card Container */
         .page-content {
             max-width: 320px;
@@ -291,18 +296,32 @@
         .details-grid {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
             margin-bottom: 16px;
             border-top: 1px dashed #e5e7eb;
-            padding-top: 12px;
+            padding-top: 14px;
             text-align: center;
         }
 
         .detail-item {
             display: flex;
             flex-direction: column;
-            gap: 2px;
             align-items: center;
+            gap: 4px;
+        }
+
+        /* Circle Icon styling as seen in reference images */
+        .item-icon-circle {
+            width: 36px;
+            height: 36px;
+            background-color: #f3f4f6;
+            color: #374151;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-bottom: 2px;
         }
 
         .detail-item .label {
@@ -536,12 +555,12 @@
                 <button class="menu-close-btn" onclick="closeMenu()"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <ul class="menu-items-list">
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-services">الخدمات</a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-who">لمن المنصة</a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-start">كيف تبدأ</a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-about">عن المنصة</a></li>
-                <li><a href="#" onclick="switchLanguage(); closeMenu();" id="m-lang">English</a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-login">تسجيل الدخول</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-services">الخدمات <i class="fa-solid fa-gears"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-who">لمن المنصة <i class="fa-solid fa-circle-info"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-start">كيف تبدأ <i class="fa-solid fa-rocket"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-about">عن المنصة <i class="fa-solid fa-building"></i></a></li>
+                <li><a href="#" onclick="switchLanguage(); closeMenu();" id="m-lang">English <i class="fa-solid fa-language"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-login">تسجيل الدخول <i class="fa-regular fa-user"></i></a></li>
             </ul>
         </div>
 
@@ -558,41 +577,50 @@
                     </div>
                 </div>
 
-                <!-- Centered & Ultra-Narrow Details List (All broken icon boxes removed) -->
+                <!-- Centered & Ultra-Narrow Details List with Circle Icons -->
                 <div class="details-grid">
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-building-columns"></i></div>
                         <span class="label" id="lbl-chamber">اسم الغرفة</span>
                         <span class="value" id="val-chamber">عنيزة</span>
                     </div>
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-file-lines"></i></div>
                         <span class="label" id="lbl-service">الخدمة</span>
                         <span class="value" id="val-service">تصديق المطبوعات الرسمية</span>
                     </div>
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-list-ol"></i></div>
                         <span class="label" id="lbl-doc-no">رقم الوثيقة</span>
                         <span class="value">602-25728</span>
                     </div>
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-user-tie"></i></div>
                         <span class="label" id="lbl-applicant">مقدم الطلب</span>
                         <span class="value" id="val-applicant">سالم فواز الشمري</span>
                     </div>
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-industry"></i></div>
                         <span class="label" id="lbl-facility">اسم المنشأة</span>
                         <span class="value" id="val-facility">شركة سالم فواز الشمري لصيانة السيارات</span>
                     </div>
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-id-card"></i></div>
                         <span class="label" id="lbl-membership">رقم العضوية</span>
                         <span class="value">602001213945</span>
                     </div>
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-barcode"></i></div>
                         <span class="label" id="lbl-unified">الرقم الموحد</span>
                         <span class="value">7049514032</span>
                     </div>
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-calendar-days"></i></div>
                         <span class="label" id="lbl-date">تاريخ ووقت الإنشاء</span>
                         <span class="value">2026/09/10 - 07:15 PM</span>
                     </div>
                     <div class="detail-item">
+                        <div class="item-icon-circle"><i class="fa-solid fa-circle-check"></i></div>
                         <span class="label" id="lbl-status">حالة الوثيقة</span>
                         <span class="value status-badge"><span class="dot"></span> <span id="status-text">مقبول - ساري</span></span>
                     </div>
@@ -702,7 +730,7 @@
             </div>
         </footer>
 
-        <!-- WhatsApp Button (Cleaned) -->
+        <!-- WhatsApp Button -->
         <a href="https://wa.me/" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
@@ -752,14 +780,14 @@
                 htmlRoot.setAttribute('lang', 'en');
                 headerImg.src = 'header-en.png';
 
-                // Side menu translations (Cleaned icons)
+                // Side menu translations with icons
                 document.getElementById('menu-title').innerText = "Tujar Platform";
-                document.getElementById('m-services').innerText = "Services";
-                document.getElementById('m-who').innerText = "Target Audience";
-                document.getElementById('m-start').innerText = "How to Start";
-                document.getElementById('m-about').innerText = "About Platform";
-                document.getElementById('m-lang').innerText = "العربية";
-                document.getElementById('m-login').innerText = "Login";
+                document.getElementById('m-services').innerHTML = 'Services <i class="fa-solid fa-gears"></i>';
+                document.getElementById('m-who').innerHTML = 'Target Audience <i class="fa-solid fa-circle-info"></i>';
+                document.getElementById('m-start').innerHTML = 'How to Start <i class="fa-solid fa-rocket"></i>';
+                document.getElementById('m-about').innerHTML = 'About Platform <i class="fa-solid fa-building"></i>';
+                document.getElementById('m-lang').innerHTML = 'العربية <i class="fa-solid fa-language"></i>';
+                document.getElementById('m-login').innerHTML = 'Login <i class="fa-regular fa-user"></i>';
 
                 // Main Content Translations
                 document.getElementById('page-main-heading').innerText = "Document Verification Result";
@@ -810,12 +838,12 @@
 
                 // Revert side menu translations
                 document.getElementById('menu-title').innerText = "منصة تجار";
-                document.getElementById('m-services').innerText = "الخدمات";
-                document.getElementById('m-who').innerText = "لمن المنصة";
-                document.getElementById('m-start').innerText = "كيف تبدأ";
-                document.getElementById('m-about').innerText = "عن المنصة";
-                document.getElementById('m-lang').innerText = "English";
-                document.getElementById('m-login').innerText = "تسجيل الدخول";
+                document.getElementById('m-services').innerHTML = 'الخدمات <i class="fa-solid fa-gears"></i>';
+                document.getElementById('m-who').innerHTML = 'لمن المنصة <i class="fa-solid fa-circle-info"></i>';
+                document.getElementById('m-start').innerHTML = 'كيف تبدأ <i class="fa-solid fa-rocket"></i>';
+                document.getElementById('m-about').innerHTML = 'عن المنصة <i class="fa-solid fa-building"></i>';
+                document.getElementById('m-lang').innerHTML = 'English <i class="fa-solid fa-language"></i>';
+                document.getElementById('m-login').innerHTML = 'تسجيل الدخول <i class="fa-regular fa-user"></i>';
 
                 // Revert Main Content Translations
                 document.getElementById('page-main-heading').innerText = "نتيجة التحقق من الوثائق";
