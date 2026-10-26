@@ -44,7 +44,7 @@
         /* Skeleton Loading Effect */
         .skeleton-loader {
             width: 100%;
-            max-width: 550px;
+            max-width: 480px;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -229,9 +229,9 @@
             color: #4b5563;
         }
 
-        /* Main Content Animation Steps */
+        /* Main Content Animation Steps - Thinner Card Container */
         .page-content {
-            max-width: 550px;
+            max-width: 480px;
             width: 100%;
             margin: 25px auto;
             padding: 0 15px;
@@ -302,20 +302,32 @@
         .detail-item {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 12px;
         }
 
+        .detail-content {
+            flex: 1;
+        }
+
+        /* Fixed Icon Box with proper Green Circle & Icons */
         .detail-item .icon-box {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             background-color: #ecfdf5;
-            color: #00875a;
+            color: #00af66;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 15px;
             flex-shrink: 0;
+        }
+
+        /* Special style for the last status icon if needed to match solid green */
+        .detail-item .icon-box.solid-green {
+            background-color: #00af66;
+            color: #ffffff;
         }
 
         .detail-item .label {
@@ -332,7 +344,7 @@
         }
 
         .status-badge {
-            color: #00875a;
+            color: #00af66;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
@@ -342,7 +354,7 @@
         .status-badge .dot {
             width: 8px;
             height: 8px;
-            background-color: #00875a;
+            background-color: #00af66;
             border-radius: 50%;
         }
 
@@ -369,7 +381,7 @@
         }
 
         .btn-primary {
-            background-color: #00875a;
+            background-color: #00af66;
             color: #ffffff;
         }
 
@@ -393,7 +405,7 @@
         .step-circle {
             width: 24px;
             height: 24px;
-            background-color: #00875a;
+            background-color: #00af66;
             color: #ffffff;
             border-radius: 50%;
             display: flex;
@@ -419,7 +431,7 @@
         .timeline-line {
             width: 2px;
             height: 30px;
-            background-color: #00875a;
+            background-color: #00af66;
             margin: 3px 11px;
         }
 
@@ -545,7 +557,7 @@
         <div id="menu-overlay" onclick="closeMenu()"></div>
         <div id="side-menu">
             <div class="menu-header">
-                <span style="font-weight: bold; color: #00875a;" id="menu-title">منصة تجار</span>
+                <span style="font-weight: bold; color: #00af66;" id="menu-title">منصة تجار</span>
                 <button class="menu-close-btn" onclick="closeMenu()"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <ul class="menu-items-list">
@@ -571,43 +583,70 @@
                     </div>
                 </div>
 
-                <!-- Narrow Vertical Details List -->
+                <!-- Narrow Vertical Details List with Fixed Clean Icons -->
                 <div class="details-grid">
                     <div class="detail-item">
+                        <div class="detail-content">
+                            <span class="label" id="lbl-chamber">اسم الغرفة</span>
+                            <span class="value" id="val-chamber">عنيزة</span>
+                        </div>
                         <div class="icon-box"><i class="fa-regular fa-building"></i></div>
-                        <div><span class="label" id="lbl-chamber">اسم الغرفة</span><span class="value" id="val-chamber">عنيزة</span></div>
                     </div>
                     <div class="detail-item">
+                        <div class="detail-content">
+                            <span class="label" id="lbl-service">الخدمة</span>
+                            <span class="value" id="val-service">تصديق المطبوعات الرسمية</span>
+                        </div>
                         <div class="icon-box"><i class="fa-regular fa-file-lines"></i></div>
-                        <div><span class="label" id="lbl-service">الخدمة</span><span class="value" id="val-service">تصديق المطبوعات الرسمية</span></div>
                     </div>
                     <div class="detail-item">
+                        <div class="detail-content">
+                            <span class="label" id="lbl-doc-no">رقم الوثيقة</span>
+                            <span class="value">602-25728</span>
+                        </div>
                         <div class="icon-box"><i class="fa-solid fa-hashtag"></i></div>
-                        <div><span class="label" id="lbl-doc-no">رقم الوثيقة</span><span class="value">602-25728</span></div>
                     </div>
                     <div class="detail-item">
+                        <div class="detail-content">
+                            <span class="label" id="lbl-applicant">مقدم الطلب</span>
+                            <span class="value" id="val-applicant">سالم فواز الشمري</span>
+                        </div>
                         <div class="icon-box"><i class="fa-regular fa-user"></i></div>
-                        <div><span class="label" id="lbl-applicant">مقدم الطلب</span><span class="value" id="val-applicant">سالم فواز الشمري</span></div>
                     </div>
                     <div class="detail-item">
+                        <div class="detail-content">
+                            <span class="label" id="lbl-facility">اسم المنشأة</span>
+                            <span class="value" id="val-facility">شركة سالم فواز الشمري لصيانة السيارات</span>
+                        </div>
                         <div class="icon-box"><i class="fa-solid fa-store"></i></div>
-                        <div><span class="label" id="lbl-facility">اسم المنشأة</span><span class="value" id="val-facility">شركة سالم فواز الشمري لصيانة السيارات</span></div>
                     </div>
                     <div class="detail-item">
+                        <div class="detail-content">
+                            <span class="label" id="lbl-membership">رقم العضوية</span>
+                            <span class="value">602001213945</span>
+                        </div>
                         <div class="icon-box"><i class="fa-solid fa-id-card"></i></div>
-                        <div><span class="label" id="lbl-membership">رقم العضوية</span><span class="value">602001213945</span></div>
                     </div>
                     <div class="detail-item">
+                        <div class="detail-content">
+                            <span class="label" id="lbl-unified">الرقم الموحد</span>
+                            <span class="value">7049514032</span>
+                        </div>
                         <div class="icon-box"><i class="fa-solid fa-barcode"></i></div>
-                        <div><span class="label" id="lbl-unified">الرقم الموحد</span><span class="value">7049514032</span></div>
                     </div>
                     <div class="detail-item">
+                        <div class="detail-content">
+                            <span class="label" id="lbl-date">تاريخ ووقت الإنشاء</span>
+                            <span class="value">2026/09/10 - 07:15 PM</span>
+                        </div>
                         <div class="icon-box"><i class="fa-regular fa-calendar-days"></i></div>
-                        <div><span class="label" id="lbl-date">تاريخ ووقت الإنشاء</span><span class="value">2026/09/10 - 07:15 PM</span></div>
                     </div>
                     <div class="detail-item">
-                        <div class="icon-box"><i class="fa-solid fa-check-double"></i></div>
-                        <div><span class="label" id="lbl-status">حالة الوثيقة</span><span class="value status-badge"><span class="dot"></span> <span id="status-text">مقبول - ساري</span></span></div>
+                        <div class="detail-content">
+                            <span class="label" id="lbl-status">حالة الوثيقة</span>
+                            <span class="value status-badge"><span class="dot"></span> <span id="status-text">مقبول - ساري</span></span>
+                        </div>
+                        <div class="icon-box solid-green"><i class="fa-solid fa-check"></i></div>
                     </div>
                 </div>
 
@@ -674,7 +713,7 @@
             <div class="footer-block">
                 <h3 id="f-sec3">روابط خارجية</h3>
                 <ul class="footer-links-list">
-                    <li><a href="https://mc.gov.sa" target="_blank" style="color: #00875a; font-weight: 600;" id="f-ext1">وزارة التجارة</a></li>
+                    <li><a href="https://mc.gov.sa" target="_blank" style="color: #00af66; font-weight: 600;" id="f-ext1">وزارة التجارة</a></li>
                     <li><a href="https://mim.gov.sa" target="_blank" id="f-ext2">وزارة الصناعة والثروة المعدنية</a></li>
                     <li><a href="https://zatca.gov.sa" target="_blank" id="f-ext3">هيئة الزكاة والضريبة والجمارك</a></li>
                     <li><a href="https://hrsd.gov.sa" target="_blank" id="f-ext4">الموارد البشرية والتنمية الاجتماعية</a></li>
