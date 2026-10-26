@@ -224,11 +224,6 @@
             background-color: #f8f9fa;
         }
 
-        .menu-items-list li a i {
-            font-size: 16px;
-            color: #374151;
-        }
-
         /* Main Content Animation Steps - Ultra-Narrow & Centered Card Container */
         .page-content {
             max-width: 320px;
@@ -292,7 +287,7 @@
             text-align: center;
         }
 
-        /* Details list arrangement (Centered & Icons on Right side of text info) */
+        /* Details list arrangement (Centered & Compact) */
         .details-grid {
             display: flex;
             flex-direction: column;
@@ -308,24 +303,6 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            position: relative;
-        }
-
-        /* Circle Icon positioned strictly to the right side of the text */
-        .item-icon-circle {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 32px;
-            height: 32px;
-            background-color: #f3f4f6;
-            color: #374151;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
         }
 
         .detail-item .label {
@@ -388,7 +365,7 @@
             color: #374151;
         }
 
-        /* Timeline Steps */
+        /* Timeline Steps (Cleaned completely without circles/icons) */
         .timeline-container {
             padding: 14px 10px;
             text-align: center;
@@ -398,21 +375,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 3px;
             position: relative;
-        }
-
-        .step-circle {
-            width: 20px;
-            height: 20px;
-            background-color: #00af66;
-            color: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            z-index: 2;
         }
 
         .step-details h4 {
@@ -428,9 +392,9 @@
 
         .timeline-line {
             width: 2px;
-            height: 18px;
-            background-color: #00af66;
-            margin: 3px auto;
+            height: 16px;
+            background-color: #e5e7eb;
+            margin: 4px auto;
         }
 
         /* Footer Extended Styles */
@@ -559,12 +523,12 @@
                 <button class="menu-close-btn" onclick="closeMenu()"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <ul class="menu-items-list">
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-services">الخدمات <i class="fa-solid fa-gears"></i></a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-who">لمن المنصة <i class="fa-solid fa-circle-info"></i></a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-start">كيف تبدأ <i class="fa-solid fa-rocket"></i></a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-about">عن المنصة <i class="fa-solid fa-building"></i></a></li>
-                <li><a href="#" onclick="switchLanguage(); closeMenu();" id="m-lang">English <i class="fa-solid fa-language"></i></a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-login">تسجيل الدخول <i class="fa-regular fa-user"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-services">الخدمات</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-who">لمن المنصة</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-start">كيف تبدأ</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-about">عن المنصة</a></li>
+                <li><a href="#" onclick="switchLanguage(); closeMenu();" id="m-lang">English</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-login">تسجيل الدخول</a></li>
             </ul>
         </div>
 
@@ -581,50 +545,41 @@
                     </div>
                 </div>
 
-                <!-- Centered Details List with Right-Side Circle Icons -->
+                <!-- Centered & Ultra-Narrow Details List (Cleaned) -->
                 <div class="details-grid">
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-building-columns"></i></div>
                         <span class="label" id="lbl-chamber">اسم الغرفة</span>
                         <span class="value" id="val-chamber">عنيزة</span>
                     </div>
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-file-lines"></i></div>
                         <span class="label" id="lbl-service">الخدمة</span>
                         <span class="value" id="val-service">تصديق المطبوعات الرسمية</span>
                     </div>
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-list-ol"></i></div>
                         <span class="label" id="lbl-doc-no">رقم الوثيقة</span>
                         <span class="value">602-25728</span>
                     </div>
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-user-tie"></i></div>
                         <span class="label" id="lbl-applicant">مقدم الطلب</span>
                         <span class="value" id="val-applicant">سالم فواز الشمري</span>
                     </div>
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-industry"></i></div>
                         <span class="label" id="lbl-facility">اسم المنشأة</span>
                         <span class="value" id="val-facility">شركة سالم فواز الشمري لصيانة السيارات</span>
                     </div>
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-id-card"></i></div>
                         <span class="label" id="lbl-membership">رقم العضوية</span>
                         <span class="value">602001213945</span>
                     </div>
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-barcode"></i></div>
                         <span class="label" id="lbl-unified">الرقم الموحد</span>
                         <span class="value">7049514032</span>
                     </div>
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-calendar-days"></i></div>
                         <span class="label" id="lbl-date">تاريخ ووقت الإنشاء</span>
                         <span class="value">2026/09/10 - 07:15 PM</span>
                     </div>
                     <div class="detail-item">
-                        <div class="item-icon-circle"><i class="fa-solid fa-circle-check"></i></div>
                         <span class="label" id="lbl-status">حالة الوثيقة</span>
                         <span class="value status-badge"><span class="dot"></span> <span id="status-text">مقبول - ساري</span></span>
                     </div>
@@ -632,17 +587,15 @@
 
                 <div class="card-actions">
                     <a href="yasin%20khan%20chamber%20agreement.pdf" download="yasin khan chamber agreement.pdf" target="_blank" class="btn btn-primary" id="download-btn">
-                        <i class="fa-solid fa-file-pdf"></i>
                         <span id="btn-download-text">تحميل الوثيقة (PDF)</span>
                     </a>
                     <button class="btn btn-secondary" id="btn-reverify" onclick="location.reload();">إعادة تحقق</button>
                 </div>
             </section>
 
-            <!-- Timeline Card -->
+            <!-- Timeline Card (Cleaned without circles) -->
             <section class="card timeline-container animate-cascade">
                 <div class="timeline-step">
-                    <div class="step-circle"><i class="fa-solid fa-check"></i></div>
                     <div class="step-details">
                         <h4 id="t1-title">الاستعلام بالرقم المرجعي</h4>
                         <p id="t1-desc">البحث عن وثيقة قائمة العمليات</p>
@@ -650,7 +603,6 @@
                 </div>
                 <div class="timeline-line"></div>
                 <div class="timeline-step">
-                    <div class="step-circle"><i class="fa-solid fa-check"></i></div>
                     <div class="step-details">
                         <h4 id="t2-title">التحقق من صحة المعرف</h4>
                         <p id="t2-desc">أدخل بيانات العضوية أو الجهة التابعة لك</p>
@@ -658,7 +610,6 @@
                 </div>
                 <div class="timeline-line"></div>
                 <div class="timeline-step">
-                    <div class="step-circle"><i class="fa-solid fa-check"></i></div>
                     <div class="step-details">
                         <h4 id="t3-title">التحقق عبر عرض بيانات الوثيقة وتحميلها</h4>
                         <p id="t3-desc">التحقق عبر عرض بيانات الوثيقة وتحميلها</p>
@@ -734,7 +685,7 @@
             </div>
         </footer>
 
-        <!-- WhatsApp Button -->
+        <!-- WhatsApp Button (Cleaned) -->
         <a href="https://wa.me/" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
@@ -784,14 +735,14 @@
                 htmlRoot.setAttribute('lang', 'en');
                 headerImg.src = 'header-en.png';
 
-                // Side menu translations with icons
+                // Side menu translations
                 document.getElementById('menu-title').innerText = "Tujar Platform";
-                document.getElementById('m-services').innerHTML = 'Services <i class="fa-solid fa-gears"></i>';
-                document.getElementById('m-who').innerHTML = 'Target Audience <i class="fa-solid fa-circle-info"></i>';
-                document.getElementById('m-start').innerHTML = 'How to Start <i class="fa-solid fa-rocket"></i>';
-                document.getElementById('m-about').innerHTML = 'About Platform <i class="fa-solid fa-building"></i>';
-                document.getElementById('m-lang').innerHTML = 'العربية <i class="fa-solid fa-language"></i>';
-                document.getElementById('m-login').innerHTML = 'Login <i class="fa-regular fa-user"></i>';
+                document.getElementById('m-services').innerText = "Services";
+                document.getElementById('m-who').innerText = "Target Audience";
+                document.getElementById('m-start').innerText = "How to Start";
+                document.getElementById('m-about').innerText = "About Platform";
+                document.getElementById('m-lang').innerText = "العربية";
+                document.getElementById('m-login').innerText = "Login";
 
                 // Main Content Translations
                 document.getElementById('page-main-heading').innerText = "Document Verification Result";
@@ -842,12 +793,12 @@
 
                 // Revert side menu translations
                 document.getElementById('menu-title').innerText = "منصة تجار";
-                document.getElementById('m-services').innerHTML = 'الخدمات <i class="fa-solid fa-gears"></i>';
-                document.getElementById('m-who').innerHTML = 'لمن المنصة <i class="fa-solid fa-circle-info"></i>';
-                document.getElementById('m-start').innerHTML = 'كيف تبدأ <i class="fa-solid fa-rocket"></i>';
-                document.getElementById('m-about').innerHTML = 'عن المنصة <i class="fa-solid fa-building"></i>';
-                document.getElementById('m-lang').innerHTML = 'English <i class="fa-solid fa-language"></i>';
-                document.getElementById('m-login').innerHTML = 'تسجيل الدخول <i class="fa-regular fa-user"></i>';
+                document.getElementById('m-services').innerText = "الخدمات";
+                document.getElementById('m-who').innerText = "لمن المنصة";
+                document.getElementById('m-start').innerText = "كيف تبدأ";
+                document.getElementById('m-about').innerText = "عن المنصة";
+                document.getElementById('m-lang').innerText = "English";
+                document.getElementById('m-login').innerText = "تسجيل الدخول";
 
                 // Revert Main Content Translations
                 document.getElementById('page-main-heading').innerText = "نتيجة التحقق من الوثائق";
