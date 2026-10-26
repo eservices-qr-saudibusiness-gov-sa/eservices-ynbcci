@@ -224,12 +224,7 @@
             background-color: #f8f9fa;
         }
 
-        .menu-items-list li a i {
-            font-size: 16px;
-            color: #4b5563;
-        }
-
-        /* Main Content Animation Steps - Even Thinner & Narrower Card Container */
+        /* Main Content Animation Steps - Ultra-Narrow & Centered Card Container */
         .page-content {
             max-width: 320px;
             width: 100%;
@@ -541,12 +536,12 @@
                 <button class="menu-close-btn" onclick="closeMenu()"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <ul class="menu-items-list">
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-services">الخدمات <i class="fa-solid fa-gears"></i></a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-who">لمن المنصة <i class="fa-solid fa-circle-info"></i></a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-start">كيف تبدأ <i class="fa-solid fa-rocket"></i></a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-about">عن المنصة <i class="fa-solid fa-building"></i></a></li>
-                <li><a href="#" onclick="switchLanguage(); closeMenu();" id="m-lang">English <i class="fa-solid fa-language"></i></a></li>
-                <li><a href="https://fsc.org.sa" target="_blank" id="m-login">تسجيل الدخول <i class="fa-regular fa-user"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-services">الخدمات</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-who">لمن المنصة</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-start">كيف تبدأ</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-about">عن المنصة</a></li>
+                <li><a href="#" onclick="switchLanguage(); closeMenu();" id="m-lang">English</a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-login">تسجيل الدخول</a></li>
             </ul>
         </div>
 
@@ -563,7 +558,7 @@
                     </div>
                 </div>
 
-                <!-- Centered & Ultra-Narrow Details List (Broken icon fully removed) -->
+                <!-- Centered & Ultra-Narrow Details List (All broken icon boxes removed) -->
                 <div class="details-grid">
                     <div class="detail-item">
                         <span class="label" id="lbl-chamber">اسم الغرفة</span>
@@ -707,7 +702,7 @@
             </div>
         </footer>
 
-        <!-- WhatsApp Button -->
+        <!-- WhatsApp Button (Cleaned) -->
         <a href="https://wa.me/" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
@@ -757,14 +752,14 @@
                 htmlRoot.setAttribute('lang', 'en');
                 headerImg.src = 'header-en.png';
 
-                // Side menu translations
+                // Side menu translations (Cleaned icons)
                 document.getElementById('menu-title').innerText = "Tujar Platform";
-                document.getElementById('m-services').innerHTML = 'Services <i class="fa-solid fa-gears"></i>';
-                document.getElementById('m-who').innerHTML = 'Target Audience <i class="fa-solid fa-circle-info"></i>';
-                document.getElementById('m-start').innerHTML = 'How to Start <i class="fa-solid fa-rocket"></i>';
-                document.getElementById('m-about').innerHTML = 'About Platform <i class="fa-solid fa-building"></i>';
-                document.getElementById('m-lang').innerHTML = 'العربية <i class="fa-solid fa-language"></i>';
-                document.getElementById('m-login').innerHTML = 'Login <i class="fa-regular fa-user"></i>';
+                document.getElementById('m-services').innerText = "Services";
+                document.getElementById('m-who').innerText = "Target Audience";
+                document.getElementById('m-start').innerText = "How to Start";
+                document.getElementById('m-about').innerText = "About Platform";
+                document.getElementById('m-lang').innerText = "العربية";
+                document.getElementById('m-login').innerText = "Login";
 
                 // Main Content Translations
                 document.getElementById('page-main-heading').innerText = "Document Verification Result";
@@ -815,12 +810,12 @@
 
                 // Revert side menu translations
                 document.getElementById('menu-title').innerText = "منصة تجار";
-                document.getElementById('m-services').innerHTML = 'الخدمات <i class="fa-solid fa-gears"></i>';
-                document.getElementById('m-who').innerHTML = 'لمن المنصة <i class="fa-solid fa-circle-info"></i>';
-                document.getElementById('m-start').innerHTML = 'كيف تبدأ <i class="fa-solid fa-rocket"></i>';
-                document.getElementById('m-about').innerHTML = 'عن المنصة <i class="fa-solid fa-building"></i>';
-                document.getElementById('m-lang').innerHTML = 'English <i class="fa-solid fa-language"></i>';
-                document.getElementById('m-login').innerHTML = 'تسجيل الدخول <i class="fa-regular fa-user"></i>';
+                document.getElementById('m-services').innerText = "الخدمات";
+                document.getElementById('m-who').innerText = "لمن المنصة";
+                document.getElementById('m-start').innerText = "كيف تبدأ";
+                document.getElementById('m-about').innerText = "عن المنصة";
+                document.getElementById('m-lang').innerText = "English";
+                document.getElementById('m-login').innerText = "تسجيل الدخول";
 
                 // Revert Main Content Translations
                 document.getElementById('page-main-heading').innerText = "نتيجة التحقق من الوثائق";
