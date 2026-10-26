@@ -8,11 +8,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* GE Dinar One Font Setup */
+        @font-face {
+            font-family: 'GE Dinar One';
+            src: url('https://cdn.jsdelivr.net/gh/moumni/arabic-fonts/GE-Dinar-One/GE-Dinar-One-Light.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/moumni/arabic-fonts/GE-Dinar-One/GE-Dinar-One-Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'GE Dinar One';
+            src: url('https://cdn.jsdelivr.net/gh/moumni/arabic-fonts/GE-Dinar-One/GE-Dinar-One-Medium.woff2') format('woff2'),
+                 url('https://cdn.jsdelivr.net/gh/moumni/arabic-fonts/GE-Dinar-One/GE-Dinar-One-Medium.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'GE Dinar One', system-ui, -apple-system, sans-serif;
         }
 
         html, body {
@@ -23,7 +40,7 @@
             overflow-y: auto;
         }
 
-        /* Full Page Loader - Updated to 1s White Blank + 0.5s Skeleton */
+        /* Full Page Loader - 1s White Blank + 0.5s Skeleton */
         #page-loader {
             position: fixed;
             top: 0;
@@ -164,7 +181,7 @@
             flex-direction: column;
         }
 
-        /* RTL vs LTR Menu Placement */
+        /* Mirror Layout: RTL (Menu on Left) vs LTR (Menu on Right) */
         html[dir="rtl"] #side-menu {
             left: -100%;
             right: auto;
@@ -547,12 +564,12 @@
                 <button class="menu-close-btn" onclick="closeMenu()"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <ul class="menu-items-list">
-                <li><a href="#" onclick="alert('خدمات منصة تجار الإلكترونية'); closeMenu();" id="m-services">الخدمات <i class="fa-solid fa-gears"></i></a></li>
-                <li><a href="#" onclick="alert('منصة تجار موجهة للقطاعات التجارية والمؤسسات'); closeMenu();" id="m-who">لمن المنصة <i class="fa-solid fa-circle-info"></i></a></li>
-                <li><a href="#" onclick="alert('خطوات البدء والاستفادة من الخدمات'); closeMenu();" id="m-start">كيف تبدأ <i class="fa-solid fa-rocket"></i></a></li>
-                <li><a href="#" onclick="alert('نبذة عن منصة تجار واتحاد الغرف السعودية'); closeMenu();" id="m-about">عن المنصة <i class="fa-solid fa-building"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-services">الخدمات <i class="fa-solid fa-gears"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-who">لمن المنصة <i class="fa-solid fa-circle-info"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-start">كيف تبدأ <i class="fa-solid fa-rocket"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-about">عن المنصة <i class="fa-solid fa-building"></i></a></li>
                 <li><a href="#" onclick="switchLanguage(); closeMenu();" id="m-lang">English <i class="fa-solid fa-language"></i></a></li>
-                <li><a href="#" onclick="alert('الانتقال لنظام تسجيل الدخول'); closeMenu();" id="m-login">تسجيل الدخول <i class="fa-regular fa-user"></i></a></li>
+                <li><a href="https://fsc.org.sa" target="_blank" id="m-login">تسجيل الدخول <i class="fa-regular fa-user"></i></a></li>
             </ul>
         </div>
 
@@ -562,7 +579,7 @@
             <!-- Document Result Card -->
             <section class="card animate-cascade">
                 <div class="card-header">
-                    <a href="#" class="back-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="https://fsc.org.sa" class="back-btn"><i class="fa-solid fa-arrow-right"></i></a>
                     <div>
                         <h2 id="page-main-heading">نتيجة التحقق من الوثائق</h2>
                         <p class="subtitle" id="page-sub-text">خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونياً عبر بوابة خدمات المشتركين.</p>
@@ -652,9 +669,9 @@
             <div class="footer-block">
                 <h3 id="f-sec1">أقسام مهمة</h3>
                 <ul class="footer-links-list">
-                    <li><a href="#" id="f-l1" onclick="alert('الأسئلة الشائعة');">الأسئلة الشائعة</a></li>
-                    <li><a href="#" id="f-l2" onclick="alert('سياسة الخصوصية');">سياسة الخصوصية</a></li>
-                    <li><a href="#" id="f-l3" onclick="alert('الشروط والأحكام');">الشروط والأحكام</a></li>
+                    <li><a href="https://fsc.org.sa" target="_blank" id="f-l1">الأسئلة الشائعة</a></li>
+                    <li><a href="https://fsc.org.sa" target="_blank" id="f-l2">سياسة الخصوصية</a></li>
+                    <li><a href="https://fsc.org.sa" target="_blank" id="f-l3">الشروط والأحكام</a></li>
                 </ul>
             </div>
 
@@ -672,10 +689,10 @@
             <div class="footer-block">
                 <h3 id="f-sec3">روابط خارجية</h3>
                 <ul class="footer-links-list">
-                    <li><a href="#" style="color: #00875a; font-weight: 600;" id="f-ext1">وزارة التجارة</a></li>
-                    <li><a href="#" id="f-ext2">وزارة الصناعة والثروة المعدنية</a></li>
-                    <li><a href="#" id="f-ext3">هيئة الزكاة والضريبة والجمارك</a></li>
-                    <li><a href="#" id="f-ext4">الموارد البشرية والتنمية الاجتماعية</a></li>
+                    <li><a href="https://mc.gov.sa" target="_blank" style="color: #00875a; font-weight: 600;" id="f-ext1">وزارة التجارة</a></li>
+                    <li><a href="https://mim.gov.sa" target="_blank" id="f-ext2">وزارة الصناعة والثروة المعدنية</a></li>
+                    <li><a href="https://zatca.gov.sa" target="_blank" id="f-ext3">هيئة الزكاة والضريبة والجمارك</a></li>
+                    <li><a href="https://hrsd.gov.sa" target="_blank" id="f-ext4">الموارد البشرية والتنمية الاجتماعية</a></li>
                 </ul>
             </div>
 
@@ -872,7 +889,7 @@
             }
         }
 
-        // Add click listener to header image based on exact side regions (0-22% and 78-100%)
+        // Add click listener to header image for Mirror Navigation (0-22% and 78-100%)
         document.getElementById('header-img').addEventListener('click', function(event) {
             const rect = this.getBoundingClientRect();
             const clickX = event.clientX - rect.left;
@@ -894,11 +911,9 @@
             }
         });
 
-        // Updated Loading Sequence: 1s White Blank -> 0.5s Skeleton -> Page Content
+        // Loading Sequence: 1s White Blank -> 0.5s Skeleton -> Page Content
         window.addEventListener('load', () => {
-            // Step 1: 1 second pure white blank screen
             setTimeout(() => {
-                // Step 2: Show skeleton loading for 0.5 seconds
                 document.getElementById('skeleton-container').style.display = 'flex';
                 
                 setTimeout(() => {
@@ -912,9 +927,9 @@
                             el.classList.add('show');
                         }, index * 200);
                     });
-                }, 500); // 0.5 seconds skeleton duration
+                }, 500);
 
-            }, 1000); // 1 second blank white duration
+            }, 1000);
         });
     </script>
 </body>
